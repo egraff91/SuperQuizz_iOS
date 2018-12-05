@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		1C0CDC9C21B6B5C2002C957B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0CDC9B21B6B5C2002C957B /* AppDelegate.swift */; };
-		1C0CDC9E21B6B5C2002C957B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0CDC9D21B6B5C2002C957B /* ViewController.swift */; };
+		1C0CDC9E21B6B5C2002C957B /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0CDC9D21B6B5C2002C957B /* AnswerViewController.swift */; };
 		1C0CDCA121B6B5C2002C957B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C0CDC9F21B6B5C2002C957B /* Main.storyboard */; };
 		1C0CDCA321B6B5C4002C957B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C0CDCA221B6B5C4002C957B /* Assets.xcassets */; };
 		1C0CDCA621B6B5C4002C957B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C0CDCA421B6B5C4002C957B /* LaunchScreen.storyboard */; };
 		1C0CDCB121B6B5C4002C957B /* SuperQuizzTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0CDCB021B6B5C4002C957B /* SuperQuizzTests.swift */; };
 		1C0CDCBC21B6B5C4002C957B /* SuperQuizzUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0CDCBB21B6B5C4002C957B /* SuperQuizzUITests.swift */; };
+		1C0CDCCA21B6B76D002C957B /* QuestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0CDCC921B6B76D002C957B /* QuestionsTableViewController.swift */; };
+		1C0CDCCD21B6C0F9002C957B /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0CDCCB21B6C0F9002C957B /* QuestionTableViewCell.swift */; };
+		1C0CDCCE21B6C0F9002C957B /* QuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C0CDCCC21B6C0F9002C957B /* QuestionTableViewCell.xib */; };
+		1C0CDCD021B6C565002C957B /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0CDCCF21B6C565002C957B /* Question.swift */; };
+		1C0E4DAF21B7CF3E00729859 /* CreateOrEditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E4DAE21B7CF3E00729859 /* CreateOrEditQuestionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +41,7 @@
 /* Begin PBXFileReference section */
 		1C0CDC9821B6B5C2002C957B /* SuperQuizz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperQuizz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C0CDC9B21B6B5C2002C957B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1C0CDC9D21B6B5C2002C957B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1C0CDC9D21B6B5C2002C957B /* AnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
 		1C0CDCA021B6B5C2002C957B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1C0CDCA221B6B5C4002C957B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C0CDCA521B6B5C4002C957B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +52,11 @@
 		1C0CDCB721B6B5C4002C957B /* SuperQuizzUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuperQuizzUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C0CDCBB21B6B5C4002C957B /* SuperQuizzUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperQuizzUITests.swift; sourceTree = "<group>"; };
 		1C0CDCBD21B6B5C4002C957B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C0CDCC921B6B76D002C957B /* QuestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewController.swift; sourceTree = "<group>"; };
+		1C0CDCCB21B6C0F9002C957B /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
+		1C0CDCCC21B6C0F9002C957B /* QuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionTableViewCell.xib; sourceTree = "<group>"; };
+		1C0CDCCF21B6C565002C957B /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		1C0E4DAE21B7CF3E00729859 /* CreateOrEditQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrEditQuestionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,11 +107,10 @@
 		1C0CDC9A21B6B5C2002C957B /* SuperQuizz */ = {
 			isa = PBXGroup;
 			children = (
+				1C0E4DB421B7CFAA00729859 /* Model */,
+				1C0E4DB021B7CF5200729859 /* UI */,
 				1C0CDC9B21B6B5C2002C957B /* AppDelegate.swift */,
-				1C0CDC9D21B6B5C2002C957B /* ViewController.swift */,
-				1C0CDC9F21B6B5C2002C957B /* Main.storyboard */,
 				1C0CDCA221B6B5C4002C957B /* Assets.xcassets */,
-				1C0CDCA421B6B5C4002C957B /* LaunchScreen.storyboard */,
 				1C0CDCA721B6B5C4002C957B /* Info.plist */,
 			);
 			path = SuperQuizz;
@@ -123,6 +132,52 @@
 				1C0CDCBD21B6B5C4002C957B /* Info.plist */,
 			);
 			path = SuperQuizzUITests;
+			sourceTree = "<group>";
+		};
+		1C0E4DB021B7CF5200729859 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1C0E4DB321B7CF7800729859 /* IB */,
+				1C0E4DB221B7CF6F00729859 /* Cells */,
+				1C0E4DB121B7CF5F00729859 /* ViewControllers */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		1C0E4DB121B7CF5F00729859 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1C0E4DAE21B7CF3E00729859 /* CreateOrEditQuestionViewController.swift */,
+				1C0CDCC921B6B76D002C957B /* QuestionsTableViewController.swift */,
+				1C0CDC9D21B6B5C2002C957B /* AnswerViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1C0E4DB221B7CF6F00729859 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1C0CDCCB21B6C0F9002C957B /* QuestionTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		1C0E4DB321B7CF7800729859 /* IB */ = {
+			isa = PBXGroup;
+			children = (
+				1C0CDCCC21B6C0F9002C957B /* QuestionTableViewCell.xib */,
+				1C0CDC9F21B6B5C2002C957B /* Main.storyboard */,
+				1C0CDCA421B6B5C4002C957B /* LaunchScreen.storyboard */,
+			);
+			path = IB;
+			sourceTree = "<group>";
+		};
+		1C0E4DB421B7CFAA00729859 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1C0CDCCF21B6C565002C957B /* Question.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C0CDCA621B6B5C4002C957B /* LaunchScreen.storyboard in Resources */,
+				1C0CDCCE21B6C0F9002C957B /* QuestionTableViewCell.xib in Resources */,
 				1C0CDCA321B6B5C4002C957B /* Assets.xcassets in Resources */,
 				1C0CDCA121B6B5C2002C957B /* Main.storyboard in Resources */,
 			);
@@ -256,8 +312,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C0CDC9E21B6B5C2002C957B /* ViewController.swift in Sources */,
+				1C0CDCD021B6C565002C957B /* Question.swift in Sources */,
+				1C0CDC9E21B6B5C2002C957B /* AnswerViewController.swift in Sources */,
+				1C0CDCCD21B6C0F9002C957B /* QuestionTableViewCell.swift in Sources */,
+				1C0CDCCA21B6B76D002C957B /* QuestionsTableViewController.swift in Sources */,
 				1C0CDC9C21B6B5C2002C957B /* AppDelegate.swift in Sources */,
+				1C0E4DAF21B7CF3E00729859 /* CreateOrEditQuestionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
