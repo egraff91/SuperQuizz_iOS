@@ -19,6 +19,7 @@
 		1C0CDCCE21B6C0F9002C957B /* QuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C0CDCCC21B6C0F9002C957B /* QuestionTableViewCell.xib */; };
 		1C0CDCD021B6C565002C957B /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0CDCCF21B6C565002C957B /* Question.swift */; };
 		1C0E4DAF21B7CF3E00729859 /* CreateOrEditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E4DAE21B7CF3E00729859 /* CreateOrEditQuestionViewController.swift */; };
+		1C10546321B9374000F3B19B /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10546221B9374000F3B19B /* APIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		1C0CDCCC21B6C0F9002C957B /* QuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionTableViewCell.xib; sourceTree = "<group>"; };
 		1C0CDCCF21B6C565002C957B /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		1C0E4DAE21B7CF3E00729859 /* CreateOrEditQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrEditQuestionViewController.swift; sourceTree = "<group>"; };
+		1C10546221B9374000F3B19B /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				1C0CDC9B21B6B5C2002C957B /* AppDelegate.swift */,
 				1C0CDCA221B6B5C4002C957B /* Assets.xcassets */,
 				1C0CDCA721B6B5C4002C957B /* Info.plist */,
+				1C10546221B9374000F3B19B /* APIClient.swift */,
 			);
 			path = SuperQuizz;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C0CDCD021B6C565002C957B /* Question.swift in Sources */,
+				1C10546321B9374000F3B19B /* APIClient.swift in Sources */,
 				1C0CDC9E21B6B5C2002C957B /* AnswerViewController.swift in Sources */,
 				1C0CDCCD21B6C0F9002C957B /* QuestionTableViewCell.swift in Sources */,
 				1C0CDCCA21B6B76D002C957B /* QuestionsTableViewController.swift in Sources */,

@@ -21,7 +21,7 @@ class QuestionsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        let question1 = Question(title: "Quelle est la capitale de la France ?", correctAnswer: "Paris")
+        /*let question1 = Question(title: "Quelle est la capitale de la France ?", correctAnswer: "Paris")
         
         let propositions: [String] = ["Madrid", "Berlin", "Paris", "Londres"]
         
@@ -35,8 +35,7 @@ class QuestionsTableViewController: UITableViewController {
         
         question2.propositions = propositions2
         
-        questions.append(question2)
-        
+        questions.append(question2)*/
         
         tableView.register(UINib(nibName: "QuestionTableViewCell", bundle: nil), forCellReuseIdentifier: "QuestionTableViewCell")
     }
@@ -63,11 +62,7 @@ class QuestionsTableViewController: UITableViewController {
         }
         
         vc.question = questions[indexPath.row]
-       /* vc.setOnReponseAnswered { (questionAnswered, result) in
-            //TODO : Mettre à jour la liste, ou faire un appel reseau, ou mettre à jour la base
-            vc.dismiss(animated: true, completion: nil)
-            self.tableView.reloadData()
-        }*/
+      
  
         vc.setOnReponseAnswered { (questionAnswered, result) in
             //TODO : Mettre à jour la liste, ou faire un appel reseau, ou mettre à jour la base
@@ -90,6 +85,32 @@ class QuestionsTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexpath) in
+            let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CreateOrEditQuestionViewController") as! CreateOrEditQuestionViewController
+            controller.delegate = self
+            //controller.questionToEdit
+            self.present(controller, animated: true, completion: nil)
+            
+        }
+        
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "delete") { (action, indexpath) in
+            //TODO: delete question
+            
+            APIClient.instance.deleteQuestionFromServer(id: self.questions[indexPath.row].id, onSuccess: { (id) in
+                print("Question \(id) supprimée")
+                self.questions.remove(at: indexPath.row)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }, onError: { (error) in
+                print(error)
+            })
+        }
+        return [editAction,deleteAction]
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showCreateOrEditViewController" {
             let controller = segue.destination as! CreateOrEditQuestionViewController
@@ -97,18 +118,46 @@ class QuestionsTableViewController: UITableViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        APIClient.instance.getAllQuestionsFromServer(onSuccess: { (questions) in
+            self.questions = questions
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }) { (error) in
+            print (error)
+        }
+        
+    }
+    
 }
+
+
 
 extension QuestionsTableViewController : CreateOrEditQuestionDelegate {
     func userDidEditQuestion(q: Question) {
         //TODO: Maj de la question
+        /*APIClient.instance.updateQuestionFromServer(question: q, onSuccess: { (question) in
+            <#code#>
+        }) { (<#Error#>) in
+            <#code#>
+        }*/
         self.presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
     func userDidCreateQuestion(q: Question) {
         // TODO:  creer la  question
-        questions.append(q)
-        self.presentedViewController?.dismiss(animated: true, completion: nil)
-        self.tableView.reloadData()
+        APIClient.instance.addQuestionToServer(question: q, onSuccess: { (question) in
+            self.questions.append(question)
+            DispatchQueue.main.async {
+                self.presentedViewController?.dismiss(animated: true, completion: nil)
+                self.tableView.reloadData()
+            }
+        }) { (error) in
+            print(error)
+        }
+
+        
     }
 }

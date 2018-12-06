@@ -60,6 +60,7 @@ class AnswerViewController: UIViewController {
     func userDidChooseAnswer(isCorrectAnswer: Bool){
         //TODO : Faire animations reussites/echecs
         var result: String
+        
         if isCorrectAnswer {
             result = "Bonne réponse"
         }else{

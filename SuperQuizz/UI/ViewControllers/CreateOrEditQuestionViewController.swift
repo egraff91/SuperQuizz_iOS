@@ -38,32 +38,33 @@ class CreateOrEditQuestionViewController: UIViewController {
     }
     
     func createOrEditQuestion () {
+        
+        guard let title = questionTitleLabel.text else {
+            return
+        }
+        
+        let propositions = [answer1Label.text, answer2Label.text, answer3Label.text, answer4Label.text]
+        
+        var correctAnswer = answer1Label.text
+        
+        if answer2Switch.isOn {
+            correctAnswer = answer2Label.text
+        }else if answer3Switch.isOn {
+            correctAnswer = answer3Label.text
+        }else if answer4Switch.isOn {
+            correctAnswer = answer4Label.text
+        }
+        
+        
+        let question = Question(title: title, correctAnswer: correctAnswer ?? "")
+        
+        question.propositions = propositions as! [String]
+        
         if let question = questionToEdit {
+            
             delegate?.userDidEditQuestion(q: question)
         } else {
-            guard let title = questionTitleLabel.text else {
-                return
-            }
-            
-            let propositions = [answer1Label.text, answer2Label.text, answer3Label.text, answer4Label.text]
-            
-           var correctAnswer = answer1Label.text
-            
-            if answer2Switch.isOn {
-                correctAnswer = answer2Label.text
-            }else if answer3Switch.isOn {
-                correctAnswer = answer3Label.text
-            }else if answer4Switch.isOn {
-                correctAnswer = answer4Label.text
-            }
-            
-            
-            let question = Question(title: title, correctAnswer: correctAnswer ?? "")
-            
-            question.propositions = propositions as! [String]
-            
-            
-            
+           
             delegate?.userDidCreateQuestion(q: question)
         }
         self.dismiss(animated: true, completion: nil)
