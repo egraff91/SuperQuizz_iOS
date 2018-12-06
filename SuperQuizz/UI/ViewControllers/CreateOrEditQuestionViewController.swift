@@ -44,6 +44,7 @@ class CreateOrEditQuestionViewController: UIViewController {
             guard let title = questionTitleLabel.text else {
                 return
             }
+            
             let propositions = [answer1Label.text, answer2Label.text, answer3Label.text, answer4Label.text]
             
            var correctAnswer = answer1Label.text
@@ -76,13 +77,11 @@ class CreateOrEditQuestionViewController: UIViewController {
             let okAction = UIAlertAction(title: "OK", style: .default ){ action in
                 print("ok")
             }
-            
             alertController.addAction(okAction)
             self.present(alertController, animated: true)
         }else{
            createOrEditQuestion()
         }
-        
     }
     
     
@@ -100,6 +99,11 @@ class CreateOrEditQuestionViewController: UIViewController {
         }else{
             correctAnswerCheck = false
         }
+    }
+    
+    
+    @IBAction func quitViewButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 
