@@ -68,8 +68,6 @@ class APIClient {
                     
                     q.id = objectDictionary["id"] as! Int
                     
-                    
-                    //TODO : Finish question
                     questionsToreturn.append(q)
                 }
                 onSuccess(questionsToreturn)
@@ -85,7 +83,7 @@ class APIClient {
         return task
     }
     
-    //TODO : Delete
+
     func deleteQuestionFromServer(id: Int, onSuccess: @escaping (Int)->(), onError: @escaping (Error)->()) -> URLSessionTask{
         
         var request = URLRequest(url: URL(string: "\(urlServer)/questions/\(id)")! )
@@ -112,7 +110,6 @@ class APIClient {
     }
     
     
-    //TODO : Post
     func addQuestionToServer(question: Question, onSuccess: @escaping (Question)->(), onError: @escaping (Error)->()) -> URLSessionTask {
         
        
@@ -140,21 +137,15 @@ class APIClient {
         
         var jsonBody: Data?
         
-        var questionDictionary: NSDictionary = ["title":title, "answer_1":answer1, "answer_2":answer2, "answer_3": answer3, "answer_4": answer4, "correct_answer": correctAnswer, "author_image_url": urlImage, "author": author]
+        let questionDictionary: NSDictionary = ["title":title, "answer_1":answer1, "answer_2":answer2, "answer_3": answer3, "answer_4": answer4, "correct_answer": correctAnswer, "author_image_url": urlImage, "author": author]
         
         do {
             //this is your json data as NSData that will be your payload for your REST HTTP call.
             let JSONPayload: Data = try JSONSerialization.data(withJSONObject: questionDictionary, options: JSONSerialization.WritingOptions.sortedKeys)
             
-            //This is unnecessary, but I'm echo-checking the data from the step above.  You don't need to do this in production.  Just to see the JSON in native format.
-            /*let JSONString = NSString(data: JSONPayload as Data, encoding: String.Encoding.utf8.rawValue)! as String
-            print("\(JSONString)")*/
-            
-            //From here you should carry on with your task or assign JSONPayload to a varialble outside of this block
-            
             jsonBody = JSONPayload
             
-        } catch {//catch errors thrown by the NSJSONSerialization.dataWithJSONObject func above.
+        } catch {
             let err = error as NSError
             NSLog("\(err.localizedDescription)")
         }
@@ -168,7 +159,6 @@ class APIClient {
             if let error = error{
                 onError(error)
             } else {
-                print(data)
                 onSuccess(question)
             }
         }
@@ -178,7 +168,7 @@ class APIClient {
         return task
     }
     
-    //TODO : Put
+  
     func updateQuestionFromServer(question: Question, onSuccess: @escaping (Question)->(), onError: @escaping (Error)->()) -> URLSessionTask{
         
         let title = question.title
@@ -205,34 +195,30 @@ class APIClient {
         
         var jsonBody: Data?
         
-        var questionDictionary: NSDictionary = ["title":title, "answer_1":answer1, "answer_2":answer2, "answer_3": answer3, "answer_4": answer4, "correct_answer": correctAnswer, "author_image_url": urlImage, "author": author]
+        let questionDictionary: NSDictionary = ["title":title, "answer_1":answer1, "answer_2":answer2, "answer_3": answer3, "answer_4": answer4, "correct_answer": correctAnswer, "author_image_url": urlImage, "author": author]
         
         do {
             //this is your json data as NSData that will be your payload for your REST HTTP call.
             let JSONPayload: Data = try JSONSerialization.data(withJSONObject: questionDictionary, options: JSONSerialization.WritingOptions.sortedKeys)
-            
-            //This is unnecessary, but I'm echo-checking the data from the step above.  You don't need to do this in production.  Just to see the JSON in native format.
-            /*let JSONString = NSString(data: JSONPayload as Data, encoding: String.Encoding.utf8.rawValue)! as String
-             print("\(JSONString)")*/
-            
-            //From here you should carry on with your task or assign JSONPayload to a varialble outside of this block
-            
+           
             jsonBody = JSONPayload
             
-        } catch {//catch errors thrown by the NSJSONSerialization.dataWithJSONObject func above.
+        } catch {
             let err = error as NSError
             NSLog("\(err.localizedDescription)")
         }
         
-        
+        print(jsonBody)
         
         var request = URLRequest(url: URL(string: "\(urlServer)/questions/\(question.id)")! )
+        request.httpBody = jsonBody
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "PUT"
         
+    
         
         
-        let task = try! URLSession.shared.dataTask(with: request) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             if let error = error{
                 onError(error)

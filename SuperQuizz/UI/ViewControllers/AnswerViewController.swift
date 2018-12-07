@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftIcons
+
 
 class AnswerViewController: UIViewController {
     
@@ -34,7 +36,6 @@ class AnswerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         questionTiltleLabel.text = question?.title
         
         answer1Button.setTitle(question?.propositions[0], for: .normal)
@@ -63,10 +64,12 @@ class AnswerViewController: UIViewController {
         
         if isCorrectAnswer {
             result = "Bonne réponse"
+            
         }else{
             result = "Mauvaise réponse"
         }
         let alertController = UIAlertController(title: "Résultat", message: result, preferredStyle: .alert)
+        alertController.setTitleIcon(icon: .fontAwesomeSolid(.check), iconSize: 20, color: .green)
         let okAction = UIAlertAction(title: "OK", style: .default ){ action in
             self.dismiss(animated: true, completion: nil)
             self.onQuestionAnswered?(self.question, isCorrectAnswer)

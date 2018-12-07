@@ -30,10 +30,44 @@ class CreateOrEditQuestionViewController: UIViewController {
     @IBOutlet weak var answer3Switch: UISwitch!
     @IBOutlet weak var answer4Switch: UISwitch!
     
+    @IBOutlet weak var validateButton: UIButton!
+    
+    @IBOutlet weak var backButton: UIButton!
+    
     var correctAnswerCheck = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        validateButton.setIcon(icon: .fontAwesomeRegular(.checkCircle),iconSize: 30, color: .green, forState: .normal)
+        backButton.setIcon(icon: .fontAwesomeSolid(.chevronCircleLeft), iconSize: 30, color: .blue, forState: .normal)
+        
+        if let question = questionToEdit{
+            questionTitleLabel.text = question.title
+            answer1Label.text = question.propositions[0]
+            answer2Label.text = question.propositions[1]
+            answer3Label.text = question.propositions[2]
+            answer4Label.text = question.propositions[3]
+            
+            answer1Switch.setOn(false, animated: true)
+            answer2Switch.setOn(false, animated: true)
+            answer3Switch.setOn(false, animated: true)
+            answer4Switch.setOn(false, animated: true)
+            
+            switch question.correctAnswer{
+            case answer2Label.text:
+                answer2Switch.setOn(true, animated: true)
+            case answer3Label.text:
+                answer3Switch.setOn(true, animated: true)
+            case answer4Label.text:
+                answer4Switch.setOn(true, animated: true)
+            default:
+                answer1Switch.setOn(true, animated: true)
+            }
+            
+        }
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -56,16 +90,16 @@ class CreateOrEditQuestionViewController: UIViewController {
         }
         
         
-        let question = Question(title: title, correctAnswer: correctAnswer ?? "")
+        let newQuestion = Question(title: title, correctAnswer: correctAnswer ?? "")
         
-        question.propositions = propositions as! [String]
+        newQuestion.propositions = propositions as! [String]
         
         if let question = questionToEdit {
             
-            delegate?.userDidEditQuestion(q: question)
+            delegate?.userDidEditQuestion(q: newQuestion)
         } else {
            
-            delegate?.userDidCreateQuestion(q: question)
+            delegate?.userDidCreateQuestion(q: newQuestion)
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -107,15 +141,5 @@ class CreateOrEditQuestionViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
